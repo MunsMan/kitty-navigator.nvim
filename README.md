@@ -45,11 +45,13 @@ For **Lazy Loading** on Keybinding use:
 ### Kitty
 
 To install the kitten, there are two ways:
-
-1. Simple copy the two python files into `~/.config/kitty/`
+One is to simply copy the two python files directly into `~/.config/kitty/`
    - `navigate_kitty.py`
    - `pass_keys.py`
-2. Add the copy set into the build of Lazy
+Or you can add this step into your NeoVim Package Manager.
+This automaticlly updates the binaries, when there is a package update.
+
+This is the corresponding Lazy Config:
 
 ```lua
 {
@@ -62,6 +64,7 @@ To install the kitten, there are two ways:
 ```
 
 Finally, you need to add the bindings into your kitty config (`~/.config/kitty/kitty.conf`).
+This is in both cases nessesary.
 
     map ctrl+j kitten pass_keys.py neighboring_window bottom ctrl+j
     map ctrl+k kitten pass_keys.py neighboring_window top    ctrl+k
