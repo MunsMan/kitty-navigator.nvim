@@ -47,8 +47,8 @@ For **Lazy Loading** on Keybinding use:
 To install the kitten, there are two ways:
 
 1. Simple copy the two python files into `~/.config/kitty/`
-   -  `navigate_kitty.py`
-   -  `pass_keys.py`
+   - `navigate_kitty.py`
+   - `pass_keys.py`
 2. Add the copy set into the build of Lazy
 
 ```lua
