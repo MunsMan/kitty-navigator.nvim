@@ -68,6 +68,18 @@ Finally, you need to add the bindings into your kitty config (`~/.config/kitty/k
     map ctrl+h kitten pass_keys.py neighboring_window left   ctrl+h
     map ctrl+l kitten pass_keys.py neighboring_window right  ctrl+l
 
+And allow remote access, otherwise NeoVim can't call back to Kitty.
+
+```
+allow_remote_control yes
+
+# For Linux:
+listen_on unix:@mykitty
+
+# Other unix systems:
+listen_on unix:/tmp/mykitty
+```
+
 ## Custom Bindings
 
 Custom Bindings can be passed as an option in NeoVim:
