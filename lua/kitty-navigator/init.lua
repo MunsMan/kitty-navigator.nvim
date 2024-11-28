@@ -28,10 +28,10 @@ end
 
 ---@param options Options
 function M.setup(options)
-	vim.keymap.set("n", options.keybindings.left or "C-h", M.navigateLeft, { silent = true })
-	vim.keymap.set("n", options.keybindings.right or "C-l", M.navigateRight, { silent = true })
-	vim.keymap.set("n", options.keybindings.up or "C-k", M.navigateUp, { silent = true })
-	vim.keymap.set("n", options.keybindings.down or "C-j", M.navigateDown, { silent = true })
+	vim.keymap.set("n", options.keybindings.left or "<C-h>", M.navigateLeft, { silent = true })
+	vim.keymap.set("n", options.keybindings.right or "<C-l>", M.navigateRight, { silent = true })
+	vim.keymap.set("n", options.keybindings.up or "<C-k>", M.navigateUp, { silent = true })
+	vim.keymap.set("n", options.keybindings.down or "<C-j>", M.navigateDown, { silent = true })
 end
 
 vim.api.nvim_create_user_command("NavigateLeft", M.navigateLeft, {})
