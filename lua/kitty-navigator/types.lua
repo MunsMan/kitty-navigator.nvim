@@ -1,5 +1,6 @@
 ---@class Options
 ---@field keybindings Keybindings | nil
+---@field enabledEmbeddedTerminal boolean
 
 ---@class Keybindings
 ---@field left string
