@@ -28,7 +28,10 @@ end
 
 ---@param options Options
 function M.setup(options)
-	local modes = options.enabledEmbeddedTerminal and { "n", "t" } or { "n" }
+	local modes = { "n" }
+	if options.enabledEmbeddedTerminal then
+		table.insert(modes, "t")
+	end
 	vim.keymap.set(modes, options.keybindings.left or "<C-h>", M.navigateLeft, { silent = true })
 	vim.keymap.set(modes, options.keybindings.right or "<C-l>", M.navigateRight, { silent = true })
 	vim.keymap.set(modes, options.keybindings.up or "<C-k>", M.navigateUp, { silent = true })
