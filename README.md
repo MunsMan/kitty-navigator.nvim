@@ -5,7 +5,8 @@ The PlugIn is inspired by [nvim-tmux-navigation](https://github.com/alexghergh/n
 
 ## Usage
 
-The plugIn provides the following default key mappings to move between NeoVim and Kitty Splits:
+The plugIn provides the following default key mappings to move between
+NeoVim/Kitty Splits and optionally embedded terminal splits see [Installation](#installation):
 
 - `<ctrl-h>` → Left
 - `<ctrl-j>` → Down
@@ -29,19 +30,44 @@ I'm using Lazy, which results into:
 }
 ```
 
+#### Lazy Loading
+
 For **Lazy Loading** on Keybinding use:
 
 ```lua
 {
     "MunsMan/kitty-navigator.nvim",
     keys = {
-        {"<C-h>", function()require("kitty-navigator").navigateLeft()end, desc = "Move left a Split", mode = {"n", "t"}},
-        {"<C-j>", function()require("kitty-navigator").navigateDown()end, desc = "Move down a Split", mode = {"n", "t"}},
-        {"<C-k>", function()require("kitty-navigator").navigateUp()end, desc = "Move up a Split", mode = {"n", "t"}},
-        {"<C-l>", function()require("kitty-navigator").navigateRight()end, desc = "Move right a Split", mode = {"n", "t"}},
+        {"<C-h>", function()require("kitty-navigator").navigateLeft()end, desc = "Move left a Split", mode = { "n" }},
+        {"<C-j>", function()require("kitty-navigator").navigateDown()end, desc = "Move down a Split", mode = { "n" }},
+        {"<C-k>", function()require("kitty-navigator").navigateUp()end, desc = "Move up a Split", mode = { "n" }},
+        {"<C-l>", function()require("kitty-navigator").navigateRight()end, desc = "Move right a Split", mode = { "n" }},
     },
 }
 ```
+
+#### Embedded Terminal
+
+If you would like to enable navigation from within neovim enbedded terminal
+splits (launched via `:terminal`), set `enabledEmbeddedTerminal = true` e.g.
+
+```lua
+{
+    "MunsMan/kitty-navigator.nvim",
+    opts = {
+        enabledEmbeddedTerminal = true,
+        keybindings = { ... }
+    },
+}
+```
+
+##### Using in Conjunction with Lazy Loading/custom `keys`
+
+If you want to enable navigation from within an embedded terminal **and** use
+Lazy Loading (or any other custom `keys` configuration), you will need to
+manually modify the lines in [Lazy Loading](#lazy-loading) to use `mode = {
+"n", "t" }`. `enabledEmbeddedTerminal` is only respected when the default value
+for `keys` is used.
 
 ### Kitty
 
