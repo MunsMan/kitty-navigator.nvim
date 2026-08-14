@@ -5,7 +5,9 @@ local mappings = { h = "left", j = "bottom", k = "top", l = "right" }
 function M.navigate(direction)
 	local left_win = vim.fn.winnr("1" .. direction)
 	if vim.fn.winnr() ~= left_win then
-		vim.api.nvim_command("wincmd " .. direction)
+		vim.schedule(function()
+			vim.api.nvim_command("wincmd " .. direction)
+		end)
 	else
 		local command = "kitty @ kitten navigate_kitty.py " .. mappings[direction]
 		vim.fn.system(command)
