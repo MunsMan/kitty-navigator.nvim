@@ -109,6 +109,27 @@ listen_on unix:@mykitty
 listen_on unix:/tmp/mykitty
 ```
 
+#### Security note
+
+The above configuration is not the safest and has some security implications.
+If you would like to minimize the risks of exposing kitty's remote control, you
+can use a configuration similar to this one:
+
+```
+allow_remote_control password
+remote_control_password "yourPassword" focus-window
+listen_on unix:${HOME}/.tmp/mykitty
+```
+
+For this to work, you can use `KITTY_RC_PASSWORD` env variable so that the
+`focus-window` command gets the proper credentials. For example, in your
+`~/.bashrc`:
+
+```
+# Used by kitty-navigator to jump accros nvim/kitty splits
+export KITTY_RC_PASSWORD=yourPassword
+```
+
 ## Custom Bindings
 
 Custom Bindings can be passed as an option in NeoVim:
