@@ -9,7 +9,7 @@ function M.navigate(direction)
 			vim.api.nvim_command("wincmd " .. direction)
 		end)
 	else
-		local command = "kitty @ kitten navigate_kitty.py " .. mappings[direction]
+		local command = "kitty @ focus-window --match neighbor:" .. mappings[direction]
 		vim.fn.system(command)
 	end
 end
@@ -41,5 +41,8 @@ function M.setup(options)
 end
 
 vim.api.nvim_create_user_command("NavigateLeft", M.navigateLeft, {})
+vim.api.nvim_create_user_command("NavigateRight", M.navigateRight, {})
+vim.api.nvim_create_user_command("NavigateUp", M.navigateUp, {})
+vim.api.nvim_create_user_command("NavigateDown", M.navigateDown, {})
 
 return M

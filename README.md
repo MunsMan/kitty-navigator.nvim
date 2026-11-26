@@ -72,8 +72,7 @@ for `keys` is used.
 ### Kitty
 
 To install the kitten, there are two ways:
-One is to simply copy the two python files directly into `~/.config/kitty/`
-   - `navigate_kitty.py`
+One is to simply copy the python file directly into `~/.config/kitty/`
    - `pass_keys.py`
 Or you can add this step into your NeoVim Package Manager.
 This automaticlly updates the binaries, when there is a package update.
@@ -84,7 +83,6 @@ This is the corresponding Lazy Config:
 {
     "MunsMan/kitty-navigator.nvim",
     build = {
-        "cp navigate_kitty.py ~/.config/kitty",
         "cp pass_keys.py ~/.config/kitty",
     },
     opts = { keybindings = {} },
@@ -109,6 +107,27 @@ listen_on unix:@mykitty
 
 # Other unix systems:
 listen_on unix:/tmp/mykitty
+```
+
+#### Security note
+
+The above configuration is not the safest and has some security implications.
+If you would like to minimize the risks of exposing kitty's remote control, you
+can use a configuration similar to this one:
+
+```
+allow_remote_control password
+remote_control_password "yourPassword" focus-window
+listen_on unix:${HOME}/.tmp/mykitty
+```
+
+For this to work, you can use `KITTY_RC_PASSWORD` env variable so that the
+`focus-window` command gets the proper credentials. For example, in your
+`~/.bashrc`:
+
+```
+# Used by kitty-navigator to jump accros nvim/kitty splits
+export KITTY_RC_PASSWORD=yourPassword
 ```
 
 ## Custom Bindings
