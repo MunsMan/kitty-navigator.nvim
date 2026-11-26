@@ -9,7 +9,7 @@ function M.navigate(direction)
 			vim.api.nvim_command("wincmd " .. direction)
 		end)
 	else
-		local command = "kitty @ kitten navigate_kitty.py " .. mappings[direction]
+		local command = "kitty @ focus-window --match neighbor:" .. mappings[direction]
 		vim.fn.system(command)
 	end
 end

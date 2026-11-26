@@ -72,8 +72,7 @@ for `keys` is used.
 ### Kitty
 
 To install the kitten, there are two ways:
-One is to simply copy the two python files directly into `~/.config/kitty/`
-   - `navigate_kitty.py`
+One is to simply copy the python file directly into `~/.config/kitty/`
    - `pass_keys.py`
 Or you can add this step into your NeoVim Package Manager.
 This automaticlly updates the binaries, when there is a package update.
@@ -84,7 +83,6 @@ This is the corresponding Lazy Config:
 {
     "MunsMan/kitty-navigator.nvim",
     build = {
-        "cp navigate_kitty.py ~/.config/kitty",
         "cp pass_keys.py ~/.config/kitty",
     },
     opts = { keybindings = {} },
