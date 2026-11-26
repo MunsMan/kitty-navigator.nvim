@@ -41,5 +41,8 @@ function M.setup(options)
 end
 
 vim.api.nvim_create_user_command("NavigateLeft", M.navigateLeft, {})
+vim.api.nvim_create_user_command("NavigateRight", M.navigateRight, {})
+vim.api.nvim_create_user_command("NavigateUp", M.navigateUp, {})
+vim.api.nvim_create_user_command("NavigateDown", M.navigateDown, {})
 
 return M
